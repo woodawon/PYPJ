@@ -18,7 +18,7 @@ def recv_data(client_socket):
 
 
 # 스레드로 구동 시켜, 메세지를 보내는 코드와 별개로 작동하도록 처리
-_thread.start_new_thread(recv_data, (client_socket))
+_thread.start_new_thread(recv_data, (client_socket,))
 print(">> Connect Server")
 
 while True:
@@ -27,7 +27,6 @@ while True:
         close_data = message
         break
 
-    client_socket.send(message.encode())
-
+    client_socket.send(message.encode()) # 인코드 형태로 보낸다 -> 서버에서 client_socket.recv(1024) 로 메시지를 받은 후 data.decode()로 디코드한 뒤 출력해 보여준다.
 
 client_socket.close()
