@@ -23,7 +23,7 @@ server_socket.listen()
 
 # 서버에 접속한 클라이언트마다 새로운 쓰레드가 생성되며 통신
 def threaded(client_socket, addr):
-    print(">> Connected by :", addr[0], ":", addr[1])
+    print(">> Connected by :", addr[0], ":", addr[1]) # addr 배열의 0번째 값 : IP 주소, 2번째 값 : client 고유 번호
 
     # 클라이언트가 접속을 끊을 때 까지 무한반복
     while True:
@@ -51,7 +51,7 @@ def threaded(client_socket, addr):
             print(">> Disconnected by " + addr[0], ":", addr[1])
             break
 
-    # 고객 목록 지우기
+    # 지워야 할 고객이 몇 명이나 남았는지 출력시켜줌.
     if client_socket in client_sockets:
         client_sockets.remove(client_socket)
         print("remove client list : ", len(client_sockets))
